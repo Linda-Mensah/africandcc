@@ -130,15 +130,15 @@ const About = () => (
         </h2>
         <div className="w-24 h-0.5 bg-amber-800 mx-auto mb-6"></div>
         <p className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-600">
-          ADCC serves as a bridge between Africa and its diaspora — a gathering
+          ADCC serves as a bridge between Africa and its diaspora, a gathering
           place where culture, history, and innovation come together to inspire
           shared progress. <br /> At the heart of our story is the Adinkra
-          symbol Funtunfunefu-Denkyemfunefu — two Siamese crocodiles sharing one
+          symbol Funtunfunefu-Denkyemfunefu, two Siamese crocodiles sharing one
           stomach. It reminds us that though we may live in different parts of
           the world, we share one destiny and one heritage. <br />
           Through our work in civic engagement, cultural preservation, youth
           empowerment, and community development, ADCC strengthens the bonds
-          that unite Africans everywhere — celebrating our collective story,
+          that unite Africans everywhere, celebrating our collective story,
           honoring our ancestors, and creating opportunities for the generations
           to come.
         </p>
@@ -174,7 +174,7 @@ const About = () => (
           {
             title: "Community Development",
             description:
-              "We collaborate with organizations, educators, and local leaders to expand access to opportunities in education, employment, and social welfare — building stronger, more resilient communities.",
+              "We collaborate with organizations, educators, and local leaders to expand access to opportunities in education, employment, and social welfare, building stronger, more resilient communities.",
             icon: "🏘️",
           },
         ].map((program, index) => (
@@ -221,7 +221,7 @@ export const MissionVision = () => {
               Our Vision
             </h3>
             <p className="text-lg text-[#111111] leading-relaxed">
-              To build a united and thriving African diaspora community — one
+              To build a united and thriving African diaspora community, one
               that celebrates its roots, amplifies its voice, and shapes a
               shared future of progress and pride.
             </p>
@@ -252,7 +252,7 @@ const GetInvolved = () => (
         ].map((action, index) => (
           <button
             key={index}
-            className="bg-white/10 backdrop-blur-sm border-2 border-white/20 hover:bg-amber-800 hover:border-amber-800 text-white px-8 py-4 rounded-none font-semibold text-lg transition-all duration-300 flex items-center gap-3 min-w-[160px] justify-center hover:scale-105"
+            className="bg-white/10 backdrop-blur-sm border-2 border-white/20 hover:bg-amber-800 hover:border-amber-800 text-white px-8 py-4 rounded-none font-semibold text-lg transition-all duration-300 flex items-center gap-3 min-w-40 justify-center hover:scale-105"
           >
             <span className="text-xl">{action.icon}</span>
             {action.label}
