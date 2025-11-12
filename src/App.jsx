@@ -1,4 +1,16 @@
 // src/App.jsx
+import {
+  Bell,
+  Globe,
+  HandCoins,
+  HelpingHand,
+  Home,
+  Mail,
+  Mailbox,
+  MapPin,
+  Phone,
+  Star,
+} from "lucide-react";
 import React, { useState } from "react";
 
 const Navbar = () => {
@@ -6,8 +18,11 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-gray-200">
-      <div className="container mx-auto flex justify-between items-center py-4 px-6">
-        <img className="w-12 h-12 object-cover" src="/adcc-logo.png" />
+      <div className="container mx-auto flex justify-between items-center py-3 px-6">
+        <img
+          className="w-12 h-12 object-cover"
+          src="/adcc-logo-transparent.png"
+        />
         {/* <h1 className="text-2xl font-bold text-gray-900 font-serif">LOGO</h1> */}
 
         {/* Desktop Menu */}
@@ -157,30 +172,30 @@ const About = () => (
             title: "Civic Engagement",
             description:
               "We encourage active participation and leadership within local communities, ensuring African diaspora voices are represented in social, economic, and political spaces across the United States.",
-            icon: "🗳️",
+            icon: <Mailbox />,
           },
           {
             title: "Cultural Preservation",
             description:
               "We celebrate African heritage through art, storytelling, and community gatherings. ADCC also organizes classes in African history, language, and traditional dance helping both youth and adults reconnect with their cultural identity and pass it on to future generations.",
-            icon: "🎭",
+            icon: <Globe />,
           },
           {
             title: "Youth Empowerment",
             description:
               "We nurture the next generation of African-descendant leaders through mentorship,workshops, and skills training in technology, entrepreneurship, and creative leadership.",
-            icon: "🌟",
+            icon: <Star />,
           },
           {
             title: "Community Development",
             description:
               "We collaborate with organizations, educators, and local leaders to expand access to opportunities in education, employment, and social welfare, building stronger, more resilient communities.",
-            icon: "🏘️",
+            icon: <Home />,
           },
         ].map((program, index) => (
           <div
             key={index}
-            className="bg-gray-50  rounded-none p-8 hover:bg-amber-50 transition-all duration-300 border border-gray-300 hover:border-amber-800 group"
+            className=" rounded-none p-8 bg-amber-50 transition-all duration-300 border border-gray-300 hover:border-amber-800 group"
           >
             <div className="w-16 h-16 rounded-none bg-gray-900 group-hover:bg-amber-800 flex items-center justify-center text-2xl text-white mb-6 transition-colors duration-300">
               {program.icon}
@@ -246,9 +261,9 @@ const GetInvolved = () => (
       </p>
       <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
         {[
-          { label: "Volunteer", icon: "👥" },
-          { label: "Donate", icon: "💝" },
-          { label: "Subscribe", icon: "📧" },
+          { label: "Volunteer", icon: <HelpingHand /> },
+          { label: "Donate", icon: <HandCoins /> },
+          { label: "Subscribe", icon: <Bell /> },
         ].map((action, index) => (
           <button
             key={index}
@@ -479,11 +494,11 @@ const Contact = () => {
               <div className="space-y-4">
                 {[
                   {
-                    icon: "📍",
+                    icon: <MapPin />,
                     text: "1717 N Street NW STE 1, Washington, DC 20036",
                   },
-                  { icon: "📞", text: "360-682-1998" },
-                  { icon: "✉️", text: "info@africandcc.org" },
+                  { icon: <Phone />, text: "360-682-1998" },
+                  { icon: <Mail />, text: "info@africandcc.org" },
                 ].map((item, index) => (
                   <div key={index} className="flex items-start space-x-4">
                     <span className="text-2xl text-amber-800 mt-1">
