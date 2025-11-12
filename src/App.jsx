@@ -147,10 +147,12 @@ const About = () => (
         <p className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-600">
           ADCC serves as a bridge between Africa and its diaspora, a gathering
           place where culture, history, and innovation come together to inspire
-          shared progress. <br /> At the heart of our story is the Adinkra
-          symbol Funtunfunefu-Denkyemfunefu, two Siamese crocodiles sharing one
+          shared progress. <br /> <br />
+          At the heart of our story is the Adinkra symbol
+          Funtunfunefu-Denkyemfunefu, two Siamese crocodiles sharing one
           stomach. It reminds us that though we may live in different parts of
           the world, we share one destiny and one heritage. <br />
+          <br />
           Through our work in civic engagement, cultural preservation, youth
           empowerment, and community development, ADCC strengthens the bonds
           that unite Africans everywhere, celebrating our collective story,
