@@ -6,10 +6,12 @@ export const Navbar = () => {
   return (
     <nav className="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-gray-200">
       <div className="container mx-auto flex justify-between items-center py-3 px-6">
-        <img
-          className="w-12 h-12 object-cover"
-          src="/adcc-logo-transparent.png"
-        />
+        <a href="#">
+          <img
+            className="w-12 h-12 object-cover"
+            src="/adcc-logo-transparent.png"
+          />
+        </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
