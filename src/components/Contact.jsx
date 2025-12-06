@@ -17,8 +17,8 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-5 mb-5 px-6 bg-white text-gray-800">
-      <div className="container mx-auto max-w-4xl">
+    <section id="contact" className="py-16 px-6 bg-white text-gray-800">
+      <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 font-serif text-gray-900">
             Contact Us
@@ -26,18 +26,14 @@ export const Contact = () => {
           <div className="w-24 h-0.5 bg-amber-800 mx-auto"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left form section */}
-          <div className="bg-gray-50 rounded-none p-8 shadow-sm border border-gray-300">
-            <h3 className="text-2xl font-bold mb-6 text-gray-900 font-serif">
+          <div className="bg-gray-50 rounded-none p-10 shadow-sm border border-gray-300">
+            <h3 className="text-2xl font-bold mb-8 text-gray-900 font-serif">
               Send us a Message
             </h3>
             <form className="space-y-6">
-              {" "}
-              {/* Changed from grid gap-6 to space-y-6 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {" "}
-                {/* Split name and email */}
                 <input
                   type="text"
                   name="name"
@@ -68,7 +64,7 @@ export const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Your Message"
-                className="w-full border border-gray-300 p-4 rounded-none h-32 focus:ring-2 focus:ring-amber-800 focus:border-transparent bg-white transition-all duration-300"
+                className="w-full border border-gray-300 p-4 rounded-none h-40 focus:ring-2 focus:ring-amber-800 focus:border-transparent bg-white transition-all duration-300"
               ></textarea>
               <button
                 type="submit"
@@ -79,39 +75,29 @@ export const Contact = () => {
             </form>
           </div>
 
-          {/* Right section - unchanged */}
-          <div className="space-y-8">
-            <div className="bg-gray-50 rounded-none p-8 shadow-sm border border-gray-300">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 font-serif">
-                Contact Information
-              </h3>
-              <div className="space-y-4">
-                {[
-                  {
-                    icon: <MapPin />,
-                    text: "1717 N Street NW STE 1, Washington, DC 20036",
-                  },
-                  { icon: <Phone />, text: "360-682-1998" },
-                  { icon: <Mail />, text: "info@africandcc.org" },
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <span className="text-2xl text-amber-800 mt-1">
-                      {item.icon}
-                    </span>
-                    <p className="text-gray-600 text-lg">{item.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-gray-900 rounded-none p-12 text-white">
-              <h3 className="text-2xl font-bold mb-4 font-serif">
-                Visit Our Center
-              </h3>
-              <p className="text-gray-300 mb-4">
-                We welcome you to visit our civic center and become part of our
-                vibrant community.
-              </p>
+          {/* Right contact info section - now single card matching form height */}
+          <div className="bg-gray-50 rounded-none p-10 shadow-sm border border-gray-300 h-full">
+            <h3 className="text-2xl font-bold mb-10 text-gray-900 font-serif">
+              Contact Information
+            </h3>
+            <div className="space-y-8">
+              {[
+                {
+                  icon: <MapPin />,
+                  text: "1717 N Street NW STE 1, Washington, DC 20036",
+                },
+                { icon: <Phone />, text: "360-682-1998" },
+                { icon: <Mail />, text: "info@africandcc.org" },
+              ].map((item, index) => (
+                <div key={index} className="flex items-start space-x-5">
+                  <span className="text-2xl text-amber-800 mt-1">
+                    {item.icon}
+                  </span>
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

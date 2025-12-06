@@ -7,8 +7,7 @@ import { GetInvolved } from "./components/GetInvolved";
 import { Events } from "./components/Events";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
-
-import Lenis from "@studio-freight/lenis";
+import { VolunteerContainer } from "./components/VolunteerContainer";
 
 export default function App() {
   return (
@@ -22,6 +21,7 @@ export default function App() {
       <Events />
       {/* <Store /> */}
       <Contact />
+      {/* <VolunteerContainer /> */}
       <Footer />
     </div>
   );

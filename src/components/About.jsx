@@ -8,10 +8,10 @@ export const About = () => {
     >
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
-          <h2 className="text-4xl font-bold mb-4 font-serif text-gray-900">
+          <h2 className="text-4xl font-bold font-serif text-gray-900">
             Who We Are
           </h2>
-          <div className="w-24 h-0.5 bg-amber-800 mx-auto"></div>
+          <div className="w-24 h-0.5 bg-amber-800 mb-4 mx-auto"></div>
           <p className="max-w-4xl mx-auto text-lg leading-relaxed text-gray-600">
             The African Diaspora Civic Center (ADCC) serves as a bridge between
             Africa and its diaspora, a gathering place where culture, history,
