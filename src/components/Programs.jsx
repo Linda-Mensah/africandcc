@@ -27,10 +27,11 @@ export const Programs = () => {
       longDescription:
         "Through classes in African history, traditional and contemporary dance, and languages like Twi, Yoruba, Swahili, and Amharic, participants develop cultural pride, creativity, and confidence while deepening their sense of identity and intergenerational connection.",
       features: ["Cultural Education", "African Heritage", "Youth Empowerment"],
-      bgImage: "/civic-engagement.jpg",
+      bgImage: "/cultural-preservation.jpg",
+
       icon: BookOpen,
       accentColor: "from-amber-700 to-amber-900",
-      stats: "500+ Students",
+      // stats: "500+ Students",
     },
     {
       title: "Good Citizen Initiative",
@@ -43,10 +44,10 @@ export const Programs = () => {
         "Leadership Development",
         "Community Empowerment",
       ],
-      bgImage: "/cultural-preservation.jpg",
+      bgImage: "/civic-engagement.jpg",
       icon: Users,
       accentColor: "from-blue-700 to-blue-900",
-      stats: "200+ Graduates",
+      // stats: "200+ Graduates",
     },
     {
       title: "Digital Museum",
@@ -62,7 +63,7 @@ export const Programs = () => {
       bgImage: "/youth-empowerment.jpg",
       icon: Globe,
       accentColor: "from-purple-700 to-purple-900",
-      stats: "1000+ Artifacts",
+      // stats: "1000+ Artifacts",
     },
     {
       title: "Youth Business Incubator",
@@ -78,7 +79,7 @@ export const Programs = () => {
       bgImage: "/youth-empowerment.jpg",
       icon: Rocket,
       accentColor: "from-emerald-700 to-emerald-900",
-      stats: "50+ Startups",
+      // stats: "50+ Startups",
     },
     {
       title: "African Cultural Festival (AfroCult)",
@@ -93,7 +94,7 @@ export const Programs = () => {
       bgImage: "/afroculthighlight.png",
       icon: Music,
       accentColor: "from-rose-700 to-rose-900",
-      stats: "5000+ Attendees",
+      // stats: "5000+ Attendees",
     },
     {
       title: "Community Development",
@@ -109,7 +110,7 @@ export const Programs = () => {
       bgImage: "/community-development.jpg",
       icon: Building2,
       accentColor: "from-indigo-700 to-indigo-900",
-      stats: "10+ Partnerships",
+      // stats: "10+ Partnerships",
     },
   ];
 
@@ -221,7 +222,7 @@ export const Programs = () => {
                   </ul>
 
                   {/* CTA Button */}
-                  <button className="group/btn w-full flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 border border-gray-200 hover:border-gray-300 transition-all duration-300">
+                  {/* <button className="group/btn w-full flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 border border-gray-200 hover:border-gray-300 transition-all duration-300">
                     <div className="flex items-center gap-3">
                       <div
                         className={`w-8 h-8 rounded-lg ${program.accentColor.replace("from-", "bg-").replace(" to-", "/20")} flex items-center justify-center`}
@@ -233,7 +234,7 @@ export const Programs = () => {
                       </span>
                     </div>
                     <ChevronRight className="w-5 h-5 text-gray-500 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
+                  </button> */}
                 </div>
 
                 {/* Hover Effect Line */}
