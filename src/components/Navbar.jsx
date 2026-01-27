@@ -1,67 +1,67 @@
 import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goToSection = (id) => {
+    setIsMenuOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`);
+    } else {
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <nav className="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-gray-200">
       <div className="container mx-auto flex justify-between items-center py-3 px-6">
-        <a href="#">
+        <button onClick={() => goToSection("home")}>
           <img
             className="w-12 h-12 object-cover"
             src="/adcc-logo-transparent.png"
+            alt="ADCC Logo"
           />
-        </a>
+        </button>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
-          <a
-            href="#home"
-            className="text-gray-700 hover:text-amber-800 font-medium transition-colors duration-300 relative group"
+          <button
+            onClick={() => goToSection("home")}
+            className="nav-link cursor-pointer"
           >
             Home
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-full"></span>
-          </a>
+          </button>
 
-          <a
-            href="#about"
-            className="text-gray-700 hover:text-amber-800 font-medium transition-colors duration-300 relative group"
+          <button
+            onClick={() => goToSection("about")}
+            className="nav-link cursor-pointer"
           >
             Who We Are
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-full"></span>
-          </a>
+          </button>
 
-          <a
-            href="#programs"
-            className="text-gray-700 hover:text-amber-800 font-medium transition-colors duration-300 relative group"
+          <button
+            onClick={() => goToSection("programs")}
+            className="nav-link cursor-pointer"
           >
             Programs
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-full"></span>
-          </a>
+          </button>
 
-          <a
-            href="#events"
-            className="text-gray-700 hover:text-amber-800 font-medium transition-colors duration-300 relative group"
-          >
-            Events
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-full"></span>
-          </a>
+          <Link to="/careers" className="nav-link cursor-pointer">
+            Careers
+          </Link>
 
-          {/* <a
-            href="#store"
-            className="text-gray-700 hover:text-amber-800 font-medium transition-colors duration-300 relative group"
-          >
-            Store
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-full"></span>
-          </a> */}
-
-          <a
-            href="#contact"
-            className="text-gray-700 hover:text-amber-800 font-medium transition-colors duration-300 relative group"
+          <button
+            onClick={() => goToSection("contact")}
+            className="nav-link cursor-pointer"
           >
             Contact
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-800 transition-all duration-300 group-hover:w-full"></span>
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -91,53 +91,38 @@ export const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 py-4 px-6">
           <div className="flex flex-col space-y-4">
-            <a
-              href="#home"
-              className="text-gray-700 hover:text-amber-800 font-medium py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <button onClick={() => goToSection("home")} className="mobile-link">
               Home
-            </a>
+            </button>
 
-            <a
-              href="#about"
-              className="text-gray-700 hover:text-amber-800 font-medium py-2"
-              onClick={() => setIsMenuOpen(false)}
+            <button
+              onClick={() => goToSection("about")}
+              className="mobile-link"
             >
               Who We Are
-            </a>
+            </button>
 
-            <a
-              href="#programs"
-              className="text-gray-700 hover:text-amber-800 font-medium py-2"
-              onClick={() => setIsMenuOpen(false)}
+            <button
+              onClick={() => goToSection("programs")}
+              className="mobile-link"
             >
               Programs
-            </a>
+            </button>
 
-            <a
-              href="#events"
-              className="text-gray-700 hover:text-amber-800 font-medium py-2"
+            <Link
+              to="/careers"
+              className="mobile-link"
               onClick={() => setIsMenuOpen(false)}
             >
-              Events
-            </a>
+              Careers
+            </Link>
 
-            {/* <a
-              href="#store"
-              className="text-gray-700 hover:text-amber-800 font-medium py-2"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Store
-            </a> */}
-
-            <a
-              href="#contact"
-              className="text-gray-700 hover:text-amber-800 font-medium py-2"
-              onClick={() => setIsMenuOpen(false)}
+            <button
+              onClick={() => goToSection("contact")}
+              className="mobile-link"
             >
               Contact
-            </a>
+            </button>
           </div>
         </div>
       )}

@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Hero } from "./components/Hero";
 import { Navbar } from "./components/Navbar";
 import { About } from "./components/About";
@@ -7,22 +8,42 @@ import { GetInvolved } from "./components/GetInvolved";
 import { Events } from "./components/Events";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
-import { VolunteerContainer } from "./components/VolunteerContainer";
+import { Careers } from "./components/Careers";
 
-export default function App() {
+function HomePage() {
   return (
-    <div>
-      <Navbar />
+    <>
       <Hero />
       <About />
       <MissionVision />
       <Programs />
       <GetInvolved />
-      <Events />
-      {/* <Store /> */}
+      {/* <Events /> */}
       <Contact />
-      {/* <VolunteerContainer /> */}
-      <Footer />
-    </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/careers"
+              element={
+                <>
+                  <Careers />
+                </>
+              }
+            />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
