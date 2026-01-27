@@ -10,3 +10,20 @@ html {
   line-height: normal;
   scroll-behavior: smooth;
 }
+
+.nav-link {
+  @apply text-gray-700 hover:text-amber-800 font-medium transition-colors duration-300 relative;
+}
+
+.nav-link::after {
+  content: "";
+  @apply absolute left-0 bottom-0 w-0 h-0.5 bg-amber-800 transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.mobile-link {
+  @apply text-left text-gray-700 hover:text-amber-800 font-medium py-2;
+}
