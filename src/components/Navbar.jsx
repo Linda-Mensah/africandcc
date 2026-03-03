@@ -1,10 +1,53 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Scroll tracking
+  useEffect(() => {
+    const sections = ["home", "about", "programs", "getInvolved"];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+            window.history.replaceState(null, "", `#${entry.target.id}`);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-40% 0px -50% 0px",
+        threshold: 0,
+      },
+    );
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const isActive = (type, value) => {
+    if (type === "route") {
+      return location.pathname === value;
+    }
+
+    if (type === "section") {
+      return location.pathname === "/" && activeSection === value;
+    }
+
+    return false;
+  };
 
   const goToSection = (id) => {
     setIsMenuOpen(false);
@@ -18,111 +61,98 @@ export const Navbar = () => {
     }
   };
 
+  const navItemClass = (type, value) =>
+    `relative text-sm tracking-wide transition-colors cursor-pointer ${
+      isActive(type, value)
+        ? "text-[#2C2A27]"
+        : "text-[#5C5548] hover:text-[#2C2A27]"
+    }`;
+
+  const renderIndicator = (type, value) =>
+    isActive(type, value) && (
+      <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-[#9B8B78] rounded-full transition-all duration-300" />
+    );
+
   return (
-    <nav className="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-gray-200">
-      <div className="container mx-auto flex justify-between items-center py-3 px-6">
-        <button onClick={() => goToSection("home")}>
+    <nav className="fixed w-full bg-[#f5f0ea]/95 backdrop-blur-md z-50 border-b border-[#9B8B78]/20">
+      <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-6">
+        <button
+          onClick={() => goToSection("home")}
+          className="shrink-0 cursor-pointer bg-white"
+        >
           <img
-            className="w-12 h-12 object-cover"
+            className="w-10 h-10 object-cover"
             src="/adcc-logo-transparent.png"
             alt="ADCC Logo"
           />
         </button>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
-          <button
-            onClick={() => goToSection("home")}
-            className="nav-link cursor-pointer"
-          >
-            Home
-          </button>
+        {/* Desktop */}
+        <div className="hidden md:flex items-center space-x-8">
+          {["home", "about", "programs", "getInvolved"].map((section) => (
+            <button
+              key={section}
+              onClick={() => goToSection(section)}
+              className={navItemClass("section", section)}
+            >
+              {section === "home"
+                ? "Home"
+                : section === "about"
+                  ? "Who We Are"
+                  : section === "programs"
+                    ? "Programs"
+                    : "Get Involved"}
 
-          <button
-            onClick={() => goToSection("about")}
-            className="nav-link cursor-pointer"
-          >
-            Who We Are
-          </button>
+              {renderIndicator("section", section)}
+            </button>
+          ))}
 
-          <button
-            onClick={() => goToSection("programs")}
-            className="nav-link cursor-pointer"
-          >
-            Programs
-          </button>
-
-          <Link to="/careers" className="nav-link cursor-pointer">
-            Careers
+          <Link to="/jobs" className={navItemClass("route", "/jobs")}>
+            Jobs
+            {renderIndicator("route", "/jobs")}
           </Link>
-
-          <button
-            onClick={() => goToSection("contact")}
-            className="nav-link cursor-pointer"
-          >
-            Contact
-          </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Toggle */}
         <button
-          className="md:hidden text-gray-700"
+          className="md:hidden text-[#5C5548] hover:text-[#2C2A27]"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d={
-                isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-              }
-            />
-          </svg>
+          {isMenuOpen ? (
+            <X className="w-5 h-5" />
+          ) : (
+            <Menu className="w-5 h-5" />
+          )}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 py-4 px-6">
-          <div className="flex flex-col space-y-4">
-            <button onClick={() => goToSection("home")} className="mobile-link">
-              Home
-            </button>
-
-            <button
-              onClick={() => goToSection("about")}
-              className="mobile-link"
-            >
-              Who We Are
-            </button>
-
-            <button
-              onClick={() => goToSection("programs")}
-              className="mobile-link"
-            >
-              Programs
-            </button>
+        <div className="md:hidden bg-[#f5f0ea] border-t border-[#9B8B78]/20 py-4 px-6">
+          <div className="flex flex-col space-y-4 items-center">
+            {["home", "about", "programs", "getInvolved"].map((section) => (
+              <button
+                key={section}
+                onClick={() => goToSection(section)}
+                className={navItemClass("section", section)}
+              >
+                {section === "home"
+                  ? "Home"
+                  : section === "about"
+                    ? "Who We Are"
+                    : section === "programs"
+                      ? "Programs"
+                      : "Get Involved"}
+              </button>
+            ))}
 
             <Link
-              to="/careers"
-              className="mobile-link"
+              to="/jobs"
+              className={navItemClass("route", "/jobs")}
               onClick={() => setIsMenuOpen(false)}
             >
-              Careers
+              Jobs
             </Link>
-
-            <button
-              onClick={() => goToSection("contact")}
-              className="mobile-link"
-            >
-              Contact
-            </button>
           </div>
         </div>
       )}

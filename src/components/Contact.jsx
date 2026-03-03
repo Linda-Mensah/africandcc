@@ -1,106 +1,132 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import { useState } from "react";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
+  }),
+};
 
 export const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const cards = [
+    {
+      type: "email",
+      href: "mailto:info@africandcc.org",
+      icon: Mail,
+      title: "Email Us",
+      info: "info@africandcc.org",
+      note: "Click to send email →",
+    },
+    {
+      type: "phone",
+      href: "tel:360-682-1998",
+      icon: Phone,
+      title: "Call Us",
+      info: "360-682-1998",
+      note: "Click to call →",
+    },
+    {
+      type: "address",
+      href: null,
+      icon: MapPin,
+      title: "Visit Us",
+      info: "1717 N Street NW STE 1\nWashington, DC 20036",
+      note: null,
+    },
+  ];
 
   return (
-    <section id="contact" className="py-16 px-6 bg-white text-gray-800">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 font-serif text-gray-900">
+    <section id="contact" className="py-20 px-6 bg-[#f5f0ea]">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <motion.span
+            className="text-[#9B8B78] text-xs tracking-[0.3em] uppercase mb-3 inline-block"
+            custom={0}
+            variants={fadeUp}
+          >
+            Get in Touch
+          </motion.span>
+
+          <motion.h2
+            className="text-3xl md:text-4xl font-light text-[#2C2A27] mb-4"
+            custom={1}
+            variants={fadeUp}
+          >
             Contact Us
-          </h2>
-          <div className="w-24 h-0.5 bg-amber-800 mx-auto"></div>
-        </div>
+          </motion.h2>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left form section */}
-          <div className="bg-gray-50 rounded-none p-10 shadow-sm border border-gray-300">
-            <h3 className="text-2xl font-bold mb-8 text-gray-900 font-serif">
-              Send us a Message
-            </h3>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  className="border border-gray-300 p-4 rounded-none focus:ring-2 focus:ring-amber-800 focus:border-transparent bg-white transition-all duration-300"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your Email"
-                  className="border border-gray-300 p-4 rounded-none focus:ring-2 focus:ring-amber-800 focus:border-transparent bg-white transition-all duration-300"
-                />
-              </div>
-              <input
-                type="text"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                placeholder="Subject"
-                className="w-full border border-gray-300 p-4 rounded-none focus:ring-2 focus:ring-amber-800 focus:border-transparent bg-white transition-all duration-300"
-              />
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Your Message"
-                className="w-full border border-gray-300 p-4 rounded-none h-40 focus:ring-2 focus:ring-amber-800 focus:border-transparent bg-white transition-all duration-300"
-              ></textarea>
-              <button
-                type="submit"
-                className="w-full bg-gray-900 hover:bg-amber-800 text-white py-4 rounded-none font-semibold text-lg transition-all duration-300 border-2 border-gray-900 hover:border-amber-800"
+          <motion.div
+            className="w-16 h-px bg-[#9B8B78]/30 mx-auto"
+            custom={2}
+            variants={fadeUp}
+          />
+        </motion.div>
+
+        {/* Contact Cards */}
+        <motion.div
+          className="grid md:grid-cols-3 gap-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+        >
+          {cards.map((card, index) => {
+            const Icon = card.icon;
+
+            const CardWrapper = card.href ? motion.a : motion.div; // use <a> if href exists else div
+
+            return (
+              <CardWrapper
+                key={index}
+                href={card.href || undefined}
+                className={`group bg-white p-6 border border-[#9B8B78]/20 transition-colors duration-300 flex flex-col items-center text-center ${
+                  card.href ? "hover:border-[#9B8B78]" : ""
+                }`}
+                variants={fadeUp}
+                custom={index}
               >
-                Send Message
-              </button>
-            </form>
-          </div>
-
-          {/* Right contact info section - now single card matching form height */}
-          <div className="bg-gray-50 rounded-none p-10 shadow-sm border border-gray-300 h-full">
-            <h3 className="text-2xl font-bold mb-10 text-gray-900 font-serif">
-              Contact Information
-            </h3>
-            <div className="space-y-8">
-              {[
-                {
-                  icon: <MapPin />,
-                  text: "1717 N Street NW STE 1, Washington, DC 20036",
-                },
-                { icon: <Phone />, text: "360-682-1998" },
-                { icon: <Mail />, text: "info@africandcc.org" },
-              ].map((item, index) => (
-                <div key={index} className="flex items-start space-x-5">
-                  <span className="text-2xl text-amber-800 mt-1">
-                    {item.icon}
-                  </span>
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    {item.text}
-                  </p>
+                <div
+                  className={`w-12 h-12 flex items-center justify-center mb-4 transition-colors duration-300 ${
+                    card.href
+                      ? "bg-[#9B8B78]/10 group-hover:bg-[#9B8B78]"
+                      : "bg-[#9B8B78]/10"
+                  }`}
+                >
+                  <Icon
+                    className={`w-5 h-5 transition-colors duration-300 ${
+                      card.href
+                        ? "text-[#9B8B78] group-hover:text-white"
+                        : "text-[#9B8B78]"
+                    }`}
+                    strokeWidth={1.2}
+                  />
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
+
+                <h3 className="text-sm font-medium text-[#2C2A27] mb-2 tracking-wide">
+                  {card.title}
+                </h3>
+                <p className="text-[#5C5548] text-sm break-all whitespace-pre-line">
+                  {card.info}
+                </p>
+                {card.note && (
+                  <span className="text-xs text-[#9B8B78] mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {card.note}
+                  </span>
+                )}
+              </CardWrapper>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
