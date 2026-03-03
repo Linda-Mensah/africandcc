@@ -5,10 +5,11 @@ import { About } from "./components/About";
 import { Programs } from "./components/Programs";
 import { MissionVision } from "./components/MissionVision";
 import { GetInvolved } from "./components/GetInvolved";
-import { Events } from "./components/Events";
+// import { Events } from "./components/Events";
 import { Contact } from "./components/Contact";
-import { Footer } from "./components/Footer";
-import { Careers } from "./components/Careers";
+import { Jobs } from "./components/Jobs";
+import Footer from "./components/Footer";
+import { ScrollToTop } from "./hooks/useScrollToTop";
 
 function HomePage() {
   return (
@@ -27,16 +28,17 @@ function HomePage() {
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow">
+        <main className="grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route
-              path="/careers"
+              path="/jobs"
               element={
                 <>
-                  <Careers />
+                  <Jobs />
                 </>
               }
             />
