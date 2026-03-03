@@ -89,7 +89,14 @@ export const About = () => {
                     </span>
 
                     <p className="text-[#5a4a3a] leading-relaxed text-sm md:text-base">
-                      At our core is the Adinkra symbol
+                      At our core is the &#160;
+                      <a
+                        className="text-[#9e5b18]  underline"
+                        href="https://en.wikipedia.org/wiki/Adinkra_symbols"
+                        target="_blank"
+                      >
+                        Adinkra symbol, &#160;
+                      </a>
                       Funtunfunefu-Denkyemfunefu, two Siamese crocodiles sharing
                       one stomach. It reminds us that{" "}
                       <span className="font-medium text-[#3a322a]">
