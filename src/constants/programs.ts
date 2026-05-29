@@ -42,9 +42,9 @@ export const programData = [
     icon: Rocket,
   },
   {
-    title: "African Cultural Festival (AfroCult)",
+    title: "African Cultural Festival (AfriFest)",
     longDescription:
-      "AfroCult is ADCC’s annual celebration of African heritage, creativity, and global diaspora identity. The festival features music, dance, fashion, food, art, storytelling, and community exhibitions. It also serves as a platform for entrepreneurs, artists, and small businesses to showcase their work, connect with audiences, and strengthen the African diaspora economy.",
+      "AfriFest is ADCC’s annual celebration of African heritage, creativity, and global diaspora identity. The festival features music, dance, fashion, food, art, storytelling, and community exhibitions. It also serves as a platform for entrepreneurs, artists, and small businesses to showcase their work, connect with audiences, and strengthen the African diaspora economy.",
     features: [
       "Cultural Celebration",
       "Arts & Culture",
