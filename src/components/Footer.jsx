@@ -117,9 +117,9 @@ const Footer = () => {
                     strokeWidth={1.5}
                   />
                   <span>
-                    1717 N Street NW STE 1
+                    1235 Pennsylvania Ave SE - #0710
                     <br />
-                    Washington, DC 20036
+                    Washington, DC 20003
                   </span>
                 </div>
               </li>
