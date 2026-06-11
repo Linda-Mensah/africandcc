@@ -33,7 +33,7 @@ export const Contact = () => {
       href: null,
       icon: MapPin,
       title: "Visit Us",
-      info: "1717 N Street NW STE 1\nWashington, DC 20036",
+      info: "1235 Pennsylvania Ave SE - #0710\nWashington, DC 20003",
       note: null,
     },
   ];
